@@ -50,6 +50,7 @@
 
 #define RATE_LIMIT_ENABLED          FALSE
 #define PACING_ENABLED              FALSE
+
 #define USE_CCP                     TRUE
 
 #define LOCK_STREAM_QUEUE	FALSE
@@ -283,6 +284,11 @@ struct mtcp_manager
 	struct time_stat rtstat;
 #endif /* NETSTAT */
 	struct io_module_func *iom;
+
+#if USE_CCP
+	int from_ccp;
+	int to_ccp;
+#endif
 };
 /*----------------------------------------------------------------------------*/
 typedef struct mtcp_manager* mtcp_manager_t;
