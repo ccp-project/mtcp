@@ -118,7 +118,7 @@ probe_all_rte_devices(char **argv, int *argc, char *dev_name_list)
 	fd = open(DEV_PATH, O_RDONLY);
 	if (fd == -1) {
 		TRACE_ERROR("Error opening dpdk-face!\n");
-		exit(EXIT_FAILURE);
+		//exit(EXIT_FAILURE);
 	}
 
 	dev_token = strtok_r(dev_tokenizer, delim, &saveptr);
@@ -302,9 +302,9 @@ SetNetEnv(char *dev_name_list, char *port_stat_list)
 					    cpumaskbuf,
 					    "-n",
 					    mem_channels,
-					    "--socket-mem",
-					    socket_mem_str,
-					    "--proc-type=auto"
+					    "--proc-type=auto",
+						"--log-level=8",
+						"--log-level=pmd,8",
 		};
 		ret = probe_all_rte_devices(argv, &argc, dev_name_list);
 
